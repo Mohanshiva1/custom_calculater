@@ -37,7 +37,7 @@ class _WatsState extends State<Wats> {
             child: Column(
               children: [
                 Text(
-                  'Calculate Amps',
+                  'Calculate Watts',
                   style: TextStyle(
                       fontFamily: "Nexa",
                       fontSize: height * 0.028,
@@ -104,6 +104,36 @@ class _WatsState extends State<Wats> {
 
                             double sum = double.parse(Wats1.text) * double.parse(Wats2.text);
                             wats = sum.toString();
+
+                          });
+                        },
+                        child: Container(
+                          width: width * 0.4,
+                          height: height * 0.045,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: LinearGradient(colors: [
+                                Colors.yellow.shade900,
+                                Colors.yellow.shade500
+                              ])),
+                          child: Center(
+                            child: Text(
+                              'Get Result',
+                              style: TextStyle(
+                                  fontFamily:"Nexa",
+                                  fontSize: height * 0.015,
+                                  fontWeight: FontWeight.w800),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.03,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            wats = "0".toString();
                             Wats1.clear();
                             Wats2.clear();
                           });
@@ -119,7 +149,7 @@ class _WatsState extends State<Wats> {
                               ])),
                           child: Center(
                             child: Text(
-                              'Get Amps',
+                              'Clear',
                               style: TextStyle(
                                   fontFamily:"Nexa",
                                   fontSize: height * 0.015,
@@ -128,11 +158,9 @@ class _WatsState extends State<Wats> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: height * 0.03,
-                      ),
+                      SizedBox(height: height*0.02,),
                       Text(
-                        'Amps : ${wats}',
+                        'Watts : ${wats}',
                         style: TextStyle(fontFamily:"Nexa",fontWeight: FontWeight.w700,fontSize: height*0.02),
                       )
                     ],

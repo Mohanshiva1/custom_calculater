@@ -104,6 +104,35 @@ class _VoltScreenState extends State<VoltScreen> {
                             double sum = double.parse(Volt1.text) /
                                 double.parse(Volt2.text);
                             volt = sum.toString();
+
+                          });
+                        },
+                        child: Container(
+                          width: width * 0.4,
+                          height: height * 0.045,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: LinearGradient(colors: [
+                                Colors.yellow.shade900,
+                                Colors.yellow.shade500
+                              ])),
+                          child: Center(
+                            child: Text(
+                              'Get Result',
+                              style: TextStyle(
+                                  fontSize: height * 0.015,
+                                  fontWeight: FontWeight.w800,fontFamily: "Nexa"),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.03,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            volt = "0".toString();
                             Volt1.clear();
                             Volt2.clear();
                           });
@@ -119,17 +148,16 @@ class _VoltScreenState extends State<VoltScreen> {
                               ])),
                           child: Center(
                             child: Text(
-                              'Get Volt',
+                              'Clear',
                               style: TextStyle(
+                                  fontFamily:"Nexa",
                                   fontSize: height * 0.015,
-                                  fontWeight: FontWeight.w800,fontFamily: "Nexa"),
+                                  fontWeight: FontWeight.w800),
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: height * 0.05,
-                      ),
+                      SizedBox(height: height*0.02,),
                       Text(
                         'Voltage : $volt',
                         style: TextStyle(fontSize:height*0.02,fontWeight: FontWeight.w700,fontFamily: "Nexa"),

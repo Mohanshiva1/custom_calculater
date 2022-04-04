@@ -54,22 +54,29 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
           ),
-          Center(
-            child: Text(
-              "CALCULATE",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w900,
-                  fontFamily: "Nexa,",
-                  fontSize: height * 0.04,
-                  letterSpacing: 1.3),
+          Positioned(
+            top: height*0.45,
+            left: width*0.05,
+            right: width*0.05,
+            child: Center(
+              child: Text(
+                "CALCULATE",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w900,
+                    fontFamily: "Nexa,",
+                    fontSize: height * 0.04,
+                    letterSpacing: 1.3),
+              ),
             ),
           ),
           DraggableScrollableSheet(
-            initialChildSize: 0.3,
-            minChildSize: 0.3,
+            initialChildSize: 0.2,
+            minChildSize: 0.2,
             maxChildSize: 0.5,
-            builder: (context, scrollController) => Container(
+            builder: (context, scrollController) =>
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: width*0.03,vertical: width*0.01),
               decoration: BoxDecoration(
                   color: Color(0xfff2f2f2),
                   borderRadius: BorderRadius.only(
@@ -88,9 +95,7 @@ class _MainScreenState extends State<MainScreen> {
                       height, width, "BATTERY BACKUP TIME", BackupTime()),
                   rootContainer(
                       height, width, "BATTERY CAPACITY", BatteryCapacity()),
-                  SizedBox(
-                    height: height * 0.08,
-                  ),
+
                 ],
               ),
             ),

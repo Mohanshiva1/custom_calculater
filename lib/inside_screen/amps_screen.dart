@@ -106,8 +106,8 @@ class _AmpsScreenState extends State<AmpsScreen> {
                           double sum = double.parse(Amps1.text) /
                               double.parse(Amps2.text);
                           amps = sum.toString();
-                          Amps1.clear();
-                          Amps2.clear();
+                          // Amps1.clear();
+                          // Amps2.clear();
                         });
                       },
                       child: Container(
@@ -133,6 +133,35 @@ class _AmpsScreenState extends State<AmpsScreen> {
                     SizedBox(
                       height: height * 0.03,
                     ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          amps = "0".toString();
+                          Amps1.clear();
+                          Amps2.clear();
+                        });
+                      },
+                      child: Container(
+                        width: width * 0.4,
+                        height: height * 0.045,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(colors: [
+                              Colors.yellow.shade900,
+                              Colors.yellow.shade500
+                            ])),
+                        child: Center(
+                          child: Text(
+                            'Clear',
+                            style: TextStyle(
+                                fontFamily:"Nexa",
+                                fontSize: height * 0.015,
+                                fontWeight: FontWeight.w800),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: height*0.02,),
                     Text(
                       'Amps : ${amps}',
                       style: TextStyle(fontFamily:"Nexa",fontWeight: FontWeight.w700,fontSize: height*0.02),

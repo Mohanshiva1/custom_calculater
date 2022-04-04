@@ -23,7 +23,7 @@ class _BackupTimeState extends State<BackupTime> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-            padding: EdgeInsets.all(35),
+            padding: EdgeInsets.symmetric(horizontal: width*0.05),
             width: double.infinity,
             height: height*1.0,
             decoration: BoxDecoration(
@@ -146,42 +146,77 @@ class _BackupTimeState extends State<BackupTime> {
                       SizedBox(
                         height: height * 0.03,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            double sum = double.parse(bt1.text) *
-                                double.parse(bt2.text) *
-                                double.parse(bt3.text) /
-                                double.parse(bt4.text);
-                            bt = sum.toString();
-                            bt1.clear();
-                            bt2.clear();
-                            bt3.clear();
-                            bt4.clear();
-                          });
-                        },
-                        child: Container(
-                          width: width * 0.4,
-                          height: height * 0.045,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              gradient: LinearGradient(colors: [
-                                Colors.yellow.shade900,
-                                Colors.yellow.shade500
-                              ])),
-                          child: Center(
-                            child: Text(
-                              'Get Backup Time',
-                              style: TextStyle(fontFamily: "Nexa",
-                                  fontSize: height * 0.015,
-                                  fontWeight: FontWeight.w800),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                double sum = double.parse(bt1.text) *
+                                    double.parse(bt2.text) *
+                                    double.parse(bt3.text) /
+                                    double.parse(bt4.text);
+                                bt = sum.toString();
+
+                              });
+                            },
+                            child: Container(
+                              width: width * 0.3,
+                              height: height * 0.045,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(colors: [
+                                    Colors.yellow.shade900,
+                                    Colors.yellow.shade500
+                                  ])),
+                              child: Center(
+                                child: Text(
+                                  'Get Rewsult',
+                                  style: TextStyle(fontFamily: "Nexa",
+                                      fontSize: height * 0.015,
+                                      fontWeight: FontWeight.w800),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                bt = "0".toString();
+                                bt1.clear();
+                                bt2.clear();
+                                bt3.clear();
+                                bt4.clear();
+                              });
+                            },
+                            child: Container(
+                              width: width * 0.3,
+                              height: height * 0.045,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(colors: [
+                                    Colors.yellow.shade900,
+                                    Colors.yellow.shade500
+                                  ])),
+                              child: Center(
+                                child: Text(
+                                  'Clear',
+                                  style: TextStyle(
+                                      fontFamily:"Nexa",
+                                      fontSize: height * 0.015,
+                                      fontWeight: FontWeight.w800),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
+
                       SizedBox(
                         height: height * 0.03,
                       ),
+
+                      SizedBox(height: height*0.02,),
                       Text(
                         'Backup Time : $bt',
                         style: TextStyle(fontFamily: "Nexa",fontWeight: FontWeight.w800,fontSize: height*0.02,

@@ -23,7 +23,8 @@ class _TotalLoadState extends State<TotalLoad> {
         child: Container(
             padding: EdgeInsets.all(35),
             width: double.infinity,
-            height: height*1.0,          decoration: BoxDecoration(
+            height: height*1.1,
+            decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -145,40 +146,74 @@ class _TotalLoadState extends State<TotalLoad> {
                       SizedBox(
                         height: height * 0.03,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            double sum = double.parse(tl1.text) *
-                                double.parse(tl2.text) *
-                                double.parse(tl3.text) /
-                                double.parse(tl4.text);
-                            tl = sum.toString();
-                            tl1.clear();
-                            tl2.clear();
-                            tl3.clear();
-                            tl4.clear();
-                          });
-                        },
-                        child: Container(
-                          width: width * 0.4,
-                          height: height * 0.045,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              gradient: LinearGradient(colors: [
-                                Colors.yellow.shade900,
-                                Colors.yellow.shade500
-                              ])),
-                          child: Center(
-                            child: Text(
-                              'Get Total load',
-                              style: TextStyle(
-                                  fontFamily: "Nexa",
-                                  fontSize: height * 0.008,
-                                  fontWeight: FontWeight.w800),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children : [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                double sum = double.parse(tl1.text) *
+                                    double.parse(tl2.text) *
+                                    double.parse(tl3.text) /
+                                    double.parse(tl4.text);
+                                tl = sum.toString();
+
+                              });
+                            },
+                            child: Container(
+                              width: width * 0.3,
+                              height: height * 0.045,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(colors: [
+                                    Colors.yellow.shade900,
+                                    Colors.yellow.shade500
+                                  ])),
+                              child: Center(
+                                child: Text(
+                                  'Get Result',
+                                  style: TextStyle(
+                                      fontFamily: "Nexa",
+                                      fontSize: height * 0.015,
+                                      fontWeight: FontWeight.w800),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                tl = "0".toString();
+                                tl1.clear();
+                                tl2.clear();
+                                tl3.clear();
+                                tl4.clear();
+                              });
+                            },
+                            child: Container(
+                              width: width * 0.3,
+                              height: height * 0.045,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(colors: [
+                                    Colors.yellow.shade900,
+                                    Colors.yellow.shade500
+                                  ])),
+                              child: Center(
+                                child: Text(
+                                  'Clear',
+                                  style: TextStyle(
+                                      fontFamily:"Nexa",
+                                      fontSize: height * 0.015,
+                                      fontWeight: FontWeight.w800),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ]
+
                       ),
+
                       SizedBox(
                         height: height * 0.03,
                       ),

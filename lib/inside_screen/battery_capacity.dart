@@ -23,7 +23,7 @@ class _BatteryCapacityState extends State<BatteryCapacity> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-            padding: EdgeInsets.all(35),
+            padding: EdgeInsets.all(25),
             width: double.infinity,
             height: height * 1.0,
             decoration: BoxDecoration(
@@ -153,47 +153,88 @@ class _BatteryCapacityState extends State<BatteryCapacity> {
                       SizedBox(
                         height: height * 0.03,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            double sum = double.parse(bc1.text) *
-                                double.parse(bc2.text) /
-                                double.parse(bc3.text) /
-                                double.parse(bc4.text);
-                            bc = sum.toString();
-                            bc1.clear();
-                            bc2.clear();
-                            bc3.clear();
-                            bc4.clear();
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                          });
-                        },
-                        child: Container(
-                          width: width * 0.4,
-                          height: height * 0.045,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.yellow.shade900,
-                                Colors.yellow.shade500
-                              ],
+                        children: [
+                          GestureDetector(
+
+                            onTap: () {
+                              setState(() {
+                                double sum = double.parse(bc1.text) *
+                                    double.parse(bc2.text) /
+                                    double.parse(bc3.text) /
+                                    double.parse(bc4.text);
+                                bc = sum.toString();
+                                bc1.clear();
+                                bc2.clear();
+                                bc3.clear();
+                                bc4.clear();
+
+                              });
+                            },
+                            child: Container(
+                              width: width * 0.3,
+                              height: height * 0.045,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.yellow.shade900,
+                                    Colors.yellow.shade500
+                                  ],
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Get Result ',
+                                  style: TextStyle(
+                                      fontFamily: "Nexa",
+                                      fontSize: height * 0.015,
+                                      fontWeight: FontWeight.w800),
+                                ),
+                              ),
                             ),
                           ),
-                          child: Center(
-                            child: Text(
-                              'Get Battery Capacity ',
-                              style: TextStyle(
-                                  fontFamily: "Nexa",
-                                  fontSize: height * 0.008,
-                                  fontWeight: FontWeight.w800),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                bc = "0".toString();
+                                bc1.clear();
+                                bc2.clear();
+                                bc3.clear();
+                                bc4.clear();
+                              });
+                            },
+                            child: Container(
+                              width: width * 0.3,
+                              height: height * 0.045,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(colors: [
+                                    Colors.yellow.shade900,
+                                    Colors.yellow.shade500
+                                  ])),
+                              child: Center(
+                                child: Text(
+                                  'Clear',
+                                  style: TextStyle(
+                                      fontFamily:"Nexa",
+                                      fontSize: height * 0.015,
+                                      fontWeight: FontWeight.w800),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                      SizedBox(
-                        height: height * 0.01,
-                      ),
+
+                      SizedBox(height: height*0.02,),
+
+
                       Text(
                         'Battery capacity : $bc',
                         style: TextStyle(
