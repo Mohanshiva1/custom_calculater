@@ -15,9 +15,7 @@ Route _createRoute(Widget room) {
       const begin = Offset(0.0, 0.0);
       const end = Offset.zero;
       const curve = Curves.linear;
-
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
       return SlideTransition(
         position: animation.drive(tween),
         child: child,
@@ -34,6 +32,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -41,65 +41,69 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: Color(0xff1a1a1a),
       body: Stack(
+        fit: StackFit.expand,
         children: [
           Positioned(
-            top: height * 0.01,
-            left: width * 0.02,
-            right: width * 0.02,
+            top: height * 0.030,
+            left: -1,
+            right: -1,
             child: Container(
               color: Color(0xff1a1a1a),
-              child: Center(
-                child: Lottie.asset("assets/96208-carbon-calculator.json",
-                    height: height * 0.5),
+              child: Lottie.asset(
+                "assets/56811-running-server.json",
+                fit: BoxFit.fitWidth,
               ),
             ),
           ),
           Positioned(
-            top: height*0.45,
-            left: width*0.05,
-            right: width*0.05,
+            top: height * 0.05,
+            left: width * 0.05,
+            right: width * 0.05,
             child: Center(
               child: Text(
                 "CALCULATE",
                 style: TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.w900,
-                    fontFamily: "Nexa,",
+                    fontWeight: FontWeight.w800,
+                    fontFamily: "Nexa",
                     fontSize: height * 0.04,
-                    letterSpacing: 1.3),
+                    letterSpacing: 1.5),
               ),
             ),
           ),
           DraggableScrollableSheet(
-            initialChildSize: 0.2,
-            minChildSize: 0.2,
-            maxChildSize: 0.5,
-            builder: (context, scrollController) =>
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: width*0.03,vertical: width*0.01),
-              decoration: BoxDecoration(
-                  color: Color(0xfff2f2f2),
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(
-                        35,
-                      ),
-                      topLeft: Radius.circular(35))),
-              child: ListView(
-                controller: scrollController,
-                children: [
-                  rootContainer(height, width, "AMPS", AmpsScreen()),
-                  rootContainer(height, width, "VOLTAGE", VoltScreen()),
-                  rootContainer(height, width, "WATS", Wats()),
-                  rootContainer(height, width, "TOTAL LOAD", TotalLoad()),
-                  rootContainer(
-                      height, width, "BATTERY BACKUP TIME", BackupTime()),
-                  rootContainer(
-                      height, width, "BATTERY CAPACITY", BatteryCapacity()),
+            initialChildSize: 0.55,
+            minChildSize: 0.55,
+            maxChildSize: 0.55,
+            builder:
+                (BuildContext context, ScrollController scrollController) =>
+                ListView(
 
-                ],
-              ),
-            ),
-          ),
+                  controller: scrollController,
+                  children: [
+
+
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white12,
+                      ),
+                      child: Column(
+                        children: [
+                          rootContainer(height, width, "AMPS", AmpsScreen()),
+                          rootContainer(height, width, "VOLTAGE", VoltScreen()),
+                          rootContainer(height, width, "WATS", Wats()),
+                          rootContainer(height, width, "TOTAL LOAD", TotalLoad()),
+                          rootContainer(
+                              height, width, "BATTERY BACKUP TIME", BackupTime()),
+                          rootContainer(
+                              height, width, "BATTERY CAPACITY", BatteryCapacity()),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+          )
         ],
       ),
     );
@@ -119,17 +123,17 @@ class _MainScreenState extends State<MainScreen> {
         height: height * 0.11,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Color(0xffECF0F3),
+          color: Colors.black26,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
-              offset: Offset(8.0, 8.0),
+              color: Colors.white12.withOpacity(0.1),
+              offset: Offset(2.0, 2.0),
               blurRadius: 9.0,
               spreadRadius: 1,
             ),
             BoxShadow(
-              color: Colors.white,
+              color: Colors.black12.withOpacity(0.2),
               offset: Offset(-4.0, -4.0),
               blurRadius: 7.0,
               spreadRadius: 1.0,
@@ -142,6 +146,7 @@ class _MainScreenState extends State<MainScreen> {
             style: TextStyle(
               fontSize: height * 0.015,
               fontFamily: "Nexa",
+              color: Color(0xffffffff),
               fontWeight: FontWeight.w900,
               letterSpacing: 1.3,
             ),
